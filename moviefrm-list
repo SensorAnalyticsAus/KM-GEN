@@ -1,0 +1,65 @@
+#!/bin/bash
+###############################################################################
+#                       KM-GEN TIME-LAPSE MOVIE MAKER  
+#                      Sensor Analytics Australia™ 2024
+###############################################################################
+
+## Set These Path Variables ##
+DIRP=/mnt/SSD
+MOVPATH=$DIRP/MOVIE
+FILPATH=./ffnames.txt
+DV=KM-GEN
+##############################
+
+MOV=`basename $FILPATH .txt`
+MOV=$MOV-$DV
+
+if [ $# == 0 ] 
+then
+ echo "usage FrameRate [ImgFileListName]"
+ exit 1
+else
+ FR=$1
+fi
+if [ $# == 2 ]
+then
+ FILPATH=$2
+fi
+
+if [ ! -d $MOVPATH ]
+then
+ echo "Movie Path: $MOVPATH does not exist - edit in correct path"
+ exit 1
+fi
+if [ ! -d $DIRP ]
+then
+ echo "Directory Path: $DIRP does not exist - edit in correct path"
+ exit 1
+fi
+
+rm -rf /tmp/tmp.* ||  true #clean up tmp
+TMPD=`mktemp -d`
+echo "$TMPD created"
+
+cat $FILPATH | xargs cp -t $TMPD 
+
+echo "Files: `ls $TMPD | wc -l` Copied to $TMPD"
+echo `ls $TMPD | wc -l` files found
+read -p "Continue? (y/n) " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+
+echo "Ready to start movie making"
+cd $TMPD
+sleep 5 #time to see the above echoes"
+
+cat *.jpg    | ffmpeg -hide_banner -loglevel error -stats -f image2pipe -r $FR \
+       -vcodec  mjpeg \
+        -i - -vcodec libx264 -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
+         $MOVPATH/$MOV.mp4 -y
+
+echo "jpg --> $MOVPATH/$MOV"
+

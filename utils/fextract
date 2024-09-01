@@ -1,0 +1,23 @@
+#!/bin/bash
+if [ $# -lt 3 ] || [ $1 == "-h" ]; then
+ echo "usage: videofile outputfolder framestartnum [skip_no_ts|simple_no_ts]" 
+ exit 1
+fi
+if [ ! -d $2 ]; then
+ echo "$2 does not exist!"
+ exit 1
+fi
+#
+FL="-hide_banner -loglevel error -stats"
+#
+if [ "$4" == "skip_no_ts" ]; then
+ echo "skipping non-key frames only"
+ ffmpeg $FL -skip_frame nokey -i $1 -start_number $3 -r 1 $2/img_0%5d.jpg
+elif [ "$4" == "simple_no_ts" ]; then
+ echo "simple mode"
+ ffmpeg $FL -i $1 -start_number $3 -r 1 $2/img_0%5d.jpg
+else
+ echo " skipping non-key frames - applying timestamps in each frame"
+ ffmpeg $FL -skip_frame nokey -i $1 -vf drawtext="fontcolor=red:fontsize=50:fontfile=FreeSerif.ttf:text='%{pts}':x=(w-tw)/2:y=h-th-20" -start_number $3 -r 1 $2/img_0%5d.jpg
+fi
+#x=(w-text_w)/2:y=(h-text_h)/2

@@ -1,0 +1,61 @@
+#!/bin/bash -l
+###############################################################################
+#                         KM-GEN Image Classifier 
+#                      Sensor Analytics Australia™ 2024
+###############################################################################
+# For automatically generating a time-lapse
+#
+## Set These Path Variables ##
+PyPath=$HOME/.venv/bin
+PROG=/mnt/SSD/src/KM-GEN/KM-GENe
+MOVPATH=/mnt/SSD/MOVIE
+##
+DV=KM-GEN # movie filename identifier,must match DV in moviefrm* files
+NumC=10   # number of kmeans clusters
+PERC=25   # select clusters with members less then this percentile
+FTOL=1000 # max frames for this time-lapse video
+FR=5      # default frame rate
+if [ $# -eq 2 ]; then
+ FR=$2
+fi
+###############################################
+
+if [ $# -eq 0 ] || [ $1 == "-h" ]; then
+  echo "usage: {on|off} [frame_rate]"
+  echo "progress bar on|off frame rate in frames/sec for time-lapse video"
+  exit 1
+fi
+# https://superuser.com/a/1493522/370717
+if  [ $1 != "on" ] && [ $1 != "off" ]; then
+  echo "usage: {on|off} [frame_rate]"
+  echo "progress bar on|off frame rate in frames/sec for time-lapse video"
+  exit 1
+fi
+if [ ! -d $PROG ] || [ ! -d $MOVPATH ]
+then
+   echo "date-driver error: dir path/s do not exist!"
+   exit 1
+fi
+
+echo "program ran at $(date '+%Y-%m-%d %H:%M:%S')" 
+
+cd $PROG
+
+MODE=$1
+
+FD=$(date +%a-%H)
+
+$PyPath/python train-km-mp.py $MODE 1 $NumC 
+# Keep reducing Perc threshold by 10% until under FTOL frames
+# are found and Perc is still over 20%
+while : ; do
+  $PyPath/python predict-km.py ni $PERC 
+  nf=` wc -l < ./ffnames.txt`
+  [[ $nf -gt $FTOL ]] && [[ $PERC -gt 10 ]] || break
+  PERC=$((PERC-10))
+done
+
+./moviefrm-list-ni $FR
+
+mv $MOVPATH/ffnames-$DV.mp4 $MOVPATH/ffnames$DV-$FD.mp4
+echo "$MOVPATH/ffnames$DV-$FD.mp4 saved"

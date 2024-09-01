@@ -1,0 +1,57 @@
+#!/bin/bash -l
+###############################################################################
+#                         KM-GEN Image Classifier 
+#                      Sensor Analytics Australia™ 2024
+###############################################################################
+# Use with YYYYMMDD-HHMMSS date stamped filenames from secuirty cams
+# For automatically generating a time-lapse over past 12 hrs from saved images
+NumC=10
+PERC=80
+FTOL=1500 # max files for time-lapse video
+FR=15
+## Set These Path Variables ##
+PyPath=/usr/bin
+PROG=/mnt/SSD/dev/KM-GENd
+MOVPATH=/mnt/SSD/MOVIE
+DV=KM-GEN
+##############################
+
+if [ $# -eq 0 ]
+then
+  echo "defaulting to interactive mode"
+  MODE=on 
+else
+  echo "setting mode $1" # off
+  MODE=$1
+fi
+
+if [ ! -d $PROG ] || [ ! -d $MOVPATH ]
+then
+   echo "dailydriver error: dir path/s do not exist!"
+   exit 1
+fi
+
+echo "program ran at $(date '+%Y-%m-%d %H:%M:%S')" 
+
+cd $PROG
+
+arg=12
+DT_ST=$(date +%Y%m%d%H%M%S -d "$arg hours ago")
+DT_EN=$(date +%Y%m%d%H%M%S)
+
+FD=$(date +%a-%H)
+
+$PyPath/python train-km-mp.py $MODE 1 $NumC $DT_ST $DT_EN
+# Keep reducing Perc threshold by 10% until under FTOL frames
+# are found and Perc is still over 20%
+while : ; do
+  $PyPath/python predict-km.py ni $PERC 
+  nf=` wc -l < ./ffnames.txt`
+  [[ $nf -gt $FTOL ]] && [[ $PERC -gt 30 ]] || break
+  PERC=$((PERC-10))
+done
+
+./moviefrm-list-ni $FR
+
+mv $MOVPATH/ffnames-$DV.mp4 $MOVPATH/ffnames$DV-$FD.mp4
+echo "$MOVPATH/ffnames$DV-$FD.mp4 saved"
