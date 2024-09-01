@@ -15,25 +15,28 @@ NumC=10   # number of kmeans clusters
 PERC=25   # select clusters with members less then this percentile
 FTOL=1000 # max frames for this time-lapse video
 FR=5      # default frame rate
-if [ $# -eq 2 ]; then
+if [[ -n $2 ]] && [[ $2 != "y" ]]; then
  FR=$2
+ echo "frame rate set to specified: $FR"
+else
+ echo "frame rate set to default: $FR"
 fi
 ###############################################
 
-if [ $# -eq 0 ] || [ $1 == "-h" ]; then
-  echo "usage: {on|off} [frame_rate]"
-  echo "progress bar on|off frame rate in frames/sec for time-lapse video"
+if [[ $# -eq 0 ]] || [[ $1 == "-h" ]]; then
+  echo "usage: {on|off} [frame_rate] [y]"
+  echo "progress bar on|off, frame rate in frames/sec, y no stopping"
   exit 1
 fi
 # https://superuser.com/a/1493522/370717
-if  [ $1 != "on" ] && [ $1 != "off" ]; then
-  echo "usage: {on|off} [frame_rate]"
-  echo "progress bar on|off frame rate in frames/sec for time-lapse video"
+if  [[ $1 != "on" ]] && [[ $1 != "off" ]]; then
+  echo "usage: {on|off} [frame_rate] [y|n]"
+  echo "progress bar on|off frame rate in frames/sec y no stopping"
   exit 1
 fi
-if [ ! -d $PROG ] || [ ! -d $MOVPATH ]
+if [[ ! -d $PROG ]] || [[ ! -d $MOVPATH ]]
 then
-   echo "date-driver error: dir path/s do not exist!"
+   echo "driver error: dir path/s do not exist!"
    exit 1
 fi
 
@@ -42,8 +45,6 @@ echo "program ran at $(date '+%Y-%m-%d %H:%M:%S')"
 cd $PROG
 
 MODE=$1
-
-FD=$(date +%a-%H)
 
 $PyPath/python train-km-mp.py $MODE 1 $NumC 
 # Keep reducing Perc threshold by 10% until under FTOL frames
@@ -55,7 +56,12 @@ while : ; do
   PERC=$((PERC-10))
 done
 
+if [[ -n $2 ]] && [[ $2 == "y" ]] || [[ -n $3 ]]; then
 ./moviefrm-list-ni $FR
+else
+./moviefrm-list $FR
+fi
 
-mv $MOVPATH/ffnames-$DV.mp4 $MOVPATH/ffnames$DV-$FD.mp4
-echo "$MOVPATH/ffnames$DV-$FD.mp4 saved"
+if [[ $? -eq 0 ]]; then
+  echo "$MOVPATH/ffnames-$DV.mp4 saved"
+fi
