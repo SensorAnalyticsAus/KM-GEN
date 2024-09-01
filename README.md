@@ -42,8 +42,8 @@ pip install yt-dlp
 
 ### Config
 * `ImgPath` to `my_output_folder`, or whatever you may have named it, needs to be edited in `config.py`. Other parameters can be left as is for time being.
-* Set the *Path Variables* at start of `moviefrm-list`, `moviefrm-list-ni`, and `dailydriver` bash scripts to the actual paths on your computer. 
-**NB** The variable `DV` value in `dailydriver` must be exactly the same as in `moviefrm-list-ni`.
+* Set the *Path Variables* at start of `moviefrm-list`, `moviefrm-list-ni`, and `utils/done-driver-mp` bash scripts to the actual paths on your computer. 
+**NB** The variable `DV` value in `utils/daily-driver-mp` and `utils/date-driver-mp` must be exactly the same as in `moviefrm-list-ni`.
 
 ### Example
 Clone this repository then extract frames from any MP4 movie clip (not included):
