@@ -5,6 +5,9 @@
 
 if [ $# -lt 1 ]; then
  echo "usage: {filename}"
+ echo "Utility to save trained kmeans model for re-use in predict-km.py.\
+ ImgPath must point to the same images folder with which the model was\
+ trained with."
  exit 1
 fi
 
