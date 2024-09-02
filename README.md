@@ -3,7 +3,7 @@
 `KM-GEN` is a general purpose image classifier for creating time-lapse videos from auto-captured video footage e.g. travel VLOGs, driving tours, GoPro/dash-cam trail blazing videos, nature cam snaps/videos etc. Repetitive/commonly occurring frames can be easily filtered out leaving only images which are relatively unique and thus may be of interest. A long video may be converted into a short time-lapse video of highlights or a large image dataset e.g. medical images can be condensed to a slide show of likely anomalous images.
 
 ### Demos ###
-Following clips were produced for comparing the following `KM-GEN` methods.
+Following clips were produced for comparing the three main `KM-GEN` methods.
 
 #### Feature vs Descriptors vs Invariants
 [Vincent Price | The Last Man on Earth (1964) an A.I. Rendition](https://youtu.be/dgB6E9QJVKk?si=J3d7sTJOuMGVpvhK) is about an eight minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with 100 *ORB* keypoint features.
