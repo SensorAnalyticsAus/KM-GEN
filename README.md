@@ -3,11 +3,17 @@
 `KM-GEN` is a general purpose image classifier for creating time-lapse videos from auto-captured video footage e.g. travel VLOGs, driving tours, GoPro/dash-cam trail blazing videos, nature cam snaps/videos etc. Repetitive/commonly occurring frames can be easily filtered out leaving only images which are relatively unique and thus may be of interest. A long video may be converted into a short time-lapse video of highlights or a large image dataset e.g. medical images can be condensed to a slide show of likely anomalous images.
 
 ### Demos ###
+Following clips were produced for comparing the following `KM-GEN` methods.
+
+#### Feature vs Descriptors vs Invariants
 [Vincent Price | The Last Man on Earth (1964) an A.I. Rendition](https://youtu.be/dgB6E9QJVKk?si=J3d7sTJOuMGVpvhK) is about an eight minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with 100 *ORB* keypoint features.
 
 [Vincent Price | The Last Man on Earth (1964) an A.I. Rendition (Color)](https://youtu.be/mgjJMnhwmpM) is about seven minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with 100 *ORB* descriptors using the Hamming Distances approach; *invariant pattern-recognition* section.
 
-[Vincent Price | The Last Man on Earth (1964) an A.I. Rendition (Color)](https://youtu.be/xaTTK8JK-Gs) is about six minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with Hu's moment invariants; *invariant pattern-recognition* section.
+[Vincent Price | The Last Man on Earth (1964) an A.I. Rendition (Color)](https://youtu.be/xaTTK8JK-Gs) is about six minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with Hu's moment invariants.
+
+#### Dashcam video scanning
+[3-Hour Drive on California Freeway || Dash Cam Tours](https://youtu.be/g8BbILWP7_8) is just over a minute of `KM-GEN` compilation of atypical scenes from the three hour long dash cam video with Hu's moment invariant (00:17 time-stamp 2442.873 aircraft crossing above the freeway gets picked).
 
 Hu's method is the fastest. It selects more accurately, collecting more novel scenes at some loss of continuity between the scenes making the time-lapse a bit choppier.
 
