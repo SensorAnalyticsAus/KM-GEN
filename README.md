@@ -5,7 +5,7 @@
 ### Demos ###
 Following clips were produced for comparing the three main `KM-GEN` methods.
 
-#### Feature vs Descriptors vs Invariants
+#### Features vs Descriptors vs Invariants
 [Vincent Price | The Last Man on Earth (1964) an A.I. Rendition](https://youtu.be/dgB6E9QJVKk?si=J3d7sTJOuMGVpvhK) is about an eight minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with 100 *ORB* keypoint features.
 
 [Vincent Price | The Last Man on Earth (1964) an A.I. Rendition (Color)](https://youtu.be/mgjJMnhwmpM) is about seven minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with 100 *ORB* descriptors using the Hamming Distances approach; *invariant pattern-recognition* section.
