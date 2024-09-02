@@ -13,7 +13,7 @@ Following clips were produced for comparing the three main `KM-GEN` methods.
 [Vincent Price | The Last Man on Earth (1964) an A.I. Rendition (Color)](https://youtu.be/xaTTK8JK-Gs) is about six minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with Hu's moment invariants.
 
 #### Dashcam Video Scanning
-[Dash Cam Tours | 3-Hours Dash Cam Video Scan with A.I.](https://youtu.be/g8BbILWP7_8) is a 1.2 minute `KM-GEN` scan of the three hours long dash cam video with Hu's moment invariant (00:17 time-stamp 2442.873 aircraft crossing above the freeway gets picked).
+[Dash Cam Tours | 3-Hours Dash Cam Video Scan with A.I.](https://youtu.be/g8BbILWP7_8) is a 1.2 minute `KM-GEN` scan of the three hours long dash cam video with Hu's moment invariant (00:16 time-stamp 2442.873 aircraft crossing above the freeway).
 
 Hu's method is the fastest. It selects more accurately, collecting more novel scenes at some loss of continuity between the scenes making the time-lapse a bit choppier.
 
