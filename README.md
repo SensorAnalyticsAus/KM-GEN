@@ -17,6 +17,8 @@ Following clips were produced for comparing the three main `KM-GEN` methods.
 
 Hu's method is the fastest. It selects more accurately, collecting more novel scenes at some loss of continuity between the scenes making the time-lapse a bit choppier.
 
+[Swedish Railcam | High Speed Polar Train an A.I. Rendition](https://youtu.be/rNEWurCoHp8?si=DAtGZgXiaU_yWRPr) runs a 3 hours 41 minutes train cabin cam from Narvik-Pitkäjärvi in under one minute. *ORB* descriptors' option used.
+
 ### Usage
 * The images should be of adequate resolution, e.g. 480 x 640 or above.
 * The images have adequate features such as in street scenes, landscapes, objects, people etc. For instance trying to analyse tiny MNIST images or very dark scenes will not work as these are of extremely low resolution/contrast and thus not amenable for feature analysis. Feature analysis can however be replaced with full image analysis by enabling `imgfull` option in `config.py`. 

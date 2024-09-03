@@ -1,7 +1,7 @@
 # KM-GEN CONFIG
 #
 c_old=0   # '0' compute new training data '1' re-use training data from lastrun
-ImgPath='../../../FILES/yt/images-calidrive' # images path 
+ImgPath='../../../FILES/yt/images-polar' # images path 
 cSz=5                                       # n imagefiles/workpacket
 wdir='./tmp-pkl'                            # path to working tmp dir
 imght=30   # adjust full image height to imght pixels keep same A/R
@@ -16,7 +16,7 @@ rseed=20 # any number for reproduceable indices for imgdist or 'off' to disable
 deBug=0    # '0' quiet mode '1' feature forming messages '2' more info
 imgfull=0  # '0' disables full image | '1' uses full image overrides imgdist
 img_bw=0   # '0' use default grayscale | '1' change to black and white
-imgdist=2  # '0' use keypoint features | '1' use descriptors' hamming dists
+imgdist=1  # '0' use keypoint features | '1' use descriptors' hamming dists
            # '2' use Hu's invariants
 #
 # Usage:
