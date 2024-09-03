@@ -260,6 +260,7 @@ if __name__ == "__main__":
                   tol=ktol)
        km.fit(dataNormed)
        inertias.append(km.inertia_)
+       print('clusts:{} intertia:{} iters:{}'.format(i,km.inertia_,km.n_iter_))
     print('\n')
  
     print('press [q] inside the display chart to end')
@@ -293,7 +294,7 @@ if __name__ == "__main__":
  print('* ...training done {}% images rejected km intertia:{} & iters:{} *'.
        format(round((knt_tot-knt_tot_sel)/knt_tot*100),
               round(km.inertia_,2),km.n_iter_))
- if imgdist == 1 and not imgfull: 
+ if imgdist == 1 and not imgfull and not c_old: 
      imgr2 = ipr.imgrand
      if imgr1 != imgr2:
        print(color.YELLOW+'*invariant PR ended, new index: {} *'
