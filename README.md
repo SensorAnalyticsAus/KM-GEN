@@ -77,6 +77,17 @@ DV=YT
 
 ### Invariant Pattern Recognition
 Enabling `imgdist` allows Hu's moment invariants | *ORB* descriptors being used instead of keypoint features. For later an index frame is randomly chosen and the Hamming Distances of all other frames are calculated with reference to this frame. These descriptors are not overly affected by the image being rotated so nor are their respective distances. **NB:** Enabling `imgfull` over rides this option.
+
+### Utils
+* `./utils/done-driver-mp` accepts `-h` to display usage information. This is a general purpose utility, which runs in batch mode with user specified parameters, to create a time-lapse video of all images in a folder.
+
+* `./utils/fextract` accepts `-h` to display usage information. This utility is for extracting images from videos. It provides optional parameters `[skip_no_ts|simple_no_ts]` for extracting frames without the default timestamps (in secs) by skipping non-key frames or using the default `ffmeg` mode. 
+
+* `./utils/save-km`  *usage: {filename}*. Utility to save trained KMeans model for re-use in `train-km-mp.py` or `predict-km.py`.`ImgPath` must point to the same images folder with which the model was trained with.
+
+* `./utils/daily-driver-mp` accepts `on|off` to display progress bar or run in silent mode (e.g. for use in cron). This utility is for security cam images with filenames in `OCD3` or Foscam date-time format (e.g. `img_20240515-223903_019269.jpg`. It runs in batch mode collecting all images from time now till 12 hours in the past for a time-lapse summary of events.
+* `./utils/date-driver-mp` accepts `-h` to display usage information. This utility is also for security cam images. It converts images from user specified date-time range into a time-lapse video.
+
 ### Troubleshooting
 * An incorrect path being set in `config.sys` or the bash scripts.
 * Too few images being selected. Either `nfts` can be progressively lowered towards a minimum of *3* or `imgfull` analysis option may be invoked.

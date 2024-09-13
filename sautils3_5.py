@@ -196,15 +196,17 @@ def addts(frame,ts): # ocd version updated here
         (10, frame.shape[0] - 10),\
         cv2.FONT_HERSHEY_SIMPLEX, 0.55, (255, 255, 255), 1)
     return frame
-def handleChange(frame,frame2,imgpath,imgpath2,tok):
+def handleChange(frame,frame2,imgpath,imgpath2,tok,savbw='yes'):
     ts = datetime.datetime.now() 
     if tok == 1: addts(frame,ts) # only ts frame (not frame2)
     output_path = os.path.join(imgpath,"img_%s.jpg" % (ts\
                              .strftime("%Y%m%d-%H%M%S_%f")))
-    output_path2 = os.path.join(imgpath2,"img_%s.jpg" % (ts\
-                             .strftime("%Y%m%d-%H%M%S_%f")))
     cv2.imwrite(output_path, frame)
-    cv2.imwrite(output_path2, frame2)
+    if savbw == 'yes':
+        output_path2 = os.path.join(imgpath2,"img_%s.jpg" % (ts\
+                             .strftime("%Y%m%d-%H%M%S_%f")))
+        cv2.imwrite(output_path2, frame2)
+    else: output_path2 = -1
     return output_path,output_path2
 def setthresh(start_time,end_time,nightval,dayval):
     timenow = int(datetime.datetime.now().strftime("%H"))
