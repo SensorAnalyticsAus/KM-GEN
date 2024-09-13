@@ -81,7 +81,7 @@ Enabling `imgdist` allows Hu's moment invariants | *ORB* descriptors being used 
 ### Utils
 * `./utils/done-driver-mp` accepts `-h` to display usage information. This is a general purpose utility, which runs in batch mode with user specified parameters, to create a time-lapse video of all images in a folder.
 
-* `./utils/fextract` accepts `-h` to display usage information. This utility is for extracting images from videos. It provides optional parameters `[skip_no_ts|simple_no_ts]` for extracting frames without the default timestamps (in secs) by skipping non-key frames or using the default `ffmeg` mode. 
+* `./utils/fextract` accepts `-h` to display usage information. This utility is for extracting images from videos. It provides optional parameters `[skip_no_ts|simple_no_ts]` for extracting frames without the default timestamps (in secs) by skipping non-key frames or using the default `ffmpeg` mode. 
 
 * `./utils/save-km`  *usage: {filename}*. Utility to save trained KMeans model for re-use in `train-km-mp.py` or `predict-km.py`.`ImgPath` must point to the same images folder with which the model was trained with.
 
