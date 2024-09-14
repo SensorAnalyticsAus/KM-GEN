@@ -85,7 +85,7 @@ Enabling `imgdist` allows Hu's moment invariants | *ORB* descriptors being used 
 
 * `./utils/save-km`  *usage: {filename}*. Utility to save trained KMeans model for re-use in `train-km-mp.py` or `predict-km.py`.`ImgPath` must point to the same images folder with which the model was trained with.
 
-* `./utils/daily-driver-mp` accepts `on|off` to display progress bar or run in silent mode (e.g. for use in cron). This utility is for security cam images with filenames in `OCD3` or Foscam date-time format (e.g. `img_20240515-223903_019269.jpg`. It runs in batch mode collecting all images from time now till 12 hours in the past for a time-lapse summary of events.
+* `./utils/daily-driver-mp` accepts `on|off` to display progress bar or run in silent mode (e.g. for use in cron). This utility is for security cam images with filenames in [OCD3](https://github.com/SensorAnalyticsAus/OCD---OpenCv-motion-Detector) or Foscam date-time format (e.g. `img_20240515-223903_019269.jpg`. It runs in batch mode collecting all images from time now till 12 hours in the past for a time-lapse summary of events.
 * `./utils/date-driver-mp` accepts `-h` to display usage information. This utility is also for security cam images. It converts images from user specified date-time range into a time-lapse video.
 
 ### Troubleshooting
