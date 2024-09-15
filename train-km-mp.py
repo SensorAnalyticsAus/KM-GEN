@@ -180,7 +180,7 @@ if __name__ == "__main__":
   mkdir_cleared(wdir) # working dir to save serialised mproc outputs
   img_ls=os.listdir(ImgPath)
   img_ls_chunk=list(chunk(img_ls,cSz)) 
-  workpckts=workpacks(ImgPath,wdir,img_ls_chunk)
+  workpckts=workpacks(ImgPath,img_ls_chunk,workDir=wdir)
 
   pool = Pool()
   if pbar == 'off':

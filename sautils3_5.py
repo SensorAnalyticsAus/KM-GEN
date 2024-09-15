@@ -405,7 +405,7 @@ def chunk(lst, n): # breaks a list into equal sized n chunks
 	for i in range(0, len(lst), n):
 		# yields a chunk of the list 
 		yield lst[i: i + n]
-def workpacks(imgpath,workDir,chunks):
+def workpacks(imgpath,chunks,workDir='./tmp-pkl'):
  wpcks = []
  for (i, images) in enumerate(chunks):
    outPath_fnames=os.path.join(workDir, 'proc_{}_fnames.pkl'.format(i))
