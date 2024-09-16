@@ -11,7 +11,7 @@ import pickle
 import matplotlib.pyplot as plt
 from sautils3_5 import num_name,calcEntropy,writeLog,imgcont,save_list,\
      chunk,workpacks,mkdir_cleared,color,check_img,imgFeats,fsearch,\
-     imgResize_n,fileTs,invarPR,imgbw,hu_invars
+     imgResize_n,fileTs,invarPR,imgbw,hu_invars,fileSel
             
 from config import ImgPath,cSz,wdir,deBug,kiter,kmethod,ninit,nfts,imgfull,\
      imght,saverej,imgdist,rseed,img_bw,ktol,c_old
@@ -37,9 +37,6 @@ def img_load_proc(workpacket):
  if deBug == 2:
     print('Task id:',tid)
  for img in flist:
-     if len(sys.argv) == 6:
-        fDts = fileTs(img)
-        if fDts < int(st_d_t) or fDts > int(en_d_t): continue #skip this file
      fDt=num_name(img)
      if fDt != -1 :
         imgf=os.path.join(fpath,img)
@@ -139,8 +136,8 @@ if __name__ == "__main__":
  opt = int(sys.argv[2]) # 0 for elbow analyses 1 for actual km clustering
  nC = int(sys.argv[3]) # number of clusters for elbow analyses or training 
  if len(sys.argv) == 6:
-    st_d_t=datetime.strptime(sys.argv[4],'%Y%m%d%H%M%S').timestamp()
-    en_d_t=datetime.strptime(sys.argv[5],'%Y%m%d%H%M%S').timestamp()
+    st_d_t=int(datetime.strptime(sys.argv[4],'%Y%m%d%H%M%S').timestamp())
+    en_d_t=int(datetime.strptime(sys.argv[5],'%Y%m%d%H%M%S').timestamp())
     if len(sys.argv[4]) !=14 or len(sys.argv[5]) !=14:
        print('input datetime error')
        sys.exit(1)
@@ -178,7 +175,10 @@ if __name__ == "__main__":
   if img_bw: print(color.DARKCYAN+'*black and white images used*'+color.END)
 
   mkdir_cleared(wdir) # working dir to save serialised mproc outputs
-  img_ls=os.listdir(ImgPath)
+  if len(sys.argv) == 6: 
+      img_ls=fileSel(ImgPath,sys.argv[4],sys.argv[5]) 
+      print('{} images selected for the date range'.format(len(img_ls)))
+  else: img_ls=os.listdir(ImgPath)
   img_ls_chunk=list(chunk(img_ls,cSz)) 
   workpckts=workpacks(ImgPath,img_ls_chunk,workDir=wdir)
 
