@@ -1,6 +1,6 @@
 
 ### About ###
-`KM-GEN` is a general purpose image classifier for creating time-lapse videos from auto-captured video footage e.g. travel VLOGs, driving tours, GoPro/dash-cam trail blazing videos, nature cam snaps/videos etc. Repetitive/commonly occurring frames can be easily filtered out leaving only images which are relatively unique and thus may be of interest. A long video may be converted into a short time-lapse video of highlights or a large image dataset can be condensed to a slide show of anomalous images capturing events.
+`KM-GEN` is a light-weight image classifier for summarising auto-captured video footage e.g. travel VLOGs, driving tours, GoPro/dash-cam trail blazing videos, nature cam snaps/videos etc. Repetitive/commonly occurring frames can be easily filtered out leaving only images which are relatively unique and thus may be of interest. A long video may be converted into a short time-lapse video of highlights or a large image dataset can be condensed into a slide show of relatively unique images.
 
 ### Demos ###
 Following clips were produced for comparing the three main `KM-GEN` methods.
