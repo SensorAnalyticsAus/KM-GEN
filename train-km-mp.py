@@ -91,8 +91,8 @@ def img_load_proc(workpacket):
               print('ERROR!!!',ipr.orb.shape,imgf)# sanity check
               sys.exit(1)
         elif imgdist == 2: # invoke Hu's moment invariants
-           if img_bw: data_vec = abs(hu_invars(imgbw(imgd)[1]))
-           else: data_vec = abs(hu_invars(imgd))
+           if img_bw: data_vec = hu_invars(imgbw(imgd)[1])
+           else: data_vec = hu_invars(imgd)
         else:
            data_vec = ifeats.flatten()
            if len(data_vec) != nfts*4: 
