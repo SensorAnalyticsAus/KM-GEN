@@ -17,7 +17,7 @@ Following clips were produced for comparing the three main `KM-GEN` methods.
 
 Hu's method is the fastest. It selects more accurately, collecting more novel scenes at some loss of continuity between the scenes making the time-lapse a bit choppier.
 
-[Swedish Railcam | High Speed Polar Train an A.I. Rendition](https://youtu.be/rNEWurCoHp8?si=DAtGZgXiaU_yWRPr) runs a 3 hours 41 minutes train cabin cam from Narvik-Pitkäjärvi in under one minute. *ORB* descriptors' option used.
+[Swedish Railcam | High Speed Polar Train an A.I. Rendition](https://youtu.be/rNEWurCoHp8?si=DAtGZgXiaU_yWRPr) runs a 3 hours 41 minutes train cabin cam from Narvik-Pitkäjärvi in under one minute. *ORB* descriptors' option used. [Hu Invariant version](https://youtu.be/jUA5yO4TNNw) is added for comparison.
 
 ### Usage
 * The images should be of adequate resolution, e.g. 480 x 640 or above.
