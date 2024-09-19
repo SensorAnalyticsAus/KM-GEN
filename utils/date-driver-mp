@@ -11,8 +11,8 @@ PERC=80
 FTOL=1500 # max files for time-lapse video
 FR=15
 ## Set These Path Variables ##
-PyPath=/usr/bin
-PROG=/mnt/SSD/src/KM-GENe
+PyPath=~/.venv/bin
+PROG=/mnt/SSD/src/KM-GEN/KM-GENe
 MOVPATH=/mnt/SSD/MOVIE
 DV=KM-GEN
 ###############################################

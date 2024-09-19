@@ -5,7 +5,7 @@
 ###############################################################################
 # Use with YYYYMMDD-HHMMSS date stamped filenames from secuirty cams
 # For automatically generating a time-lapse over past 12 hrs from saved images
-NumC=10
+NumC=20
 PERC=80
 FTOL=1500 # max files for time-lapse video
 FR=15

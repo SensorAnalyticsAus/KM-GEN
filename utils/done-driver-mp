@@ -12,9 +12,9 @@ MOVPATH=/mnt/SSD/MOVIE
 ##
 DV=KM-GEN # movie filename identifier,must match DV in moviefrm* files
 NumC=10   # number of kmeans clusters
-PERC=25   # select clusters with members less then this percentile
-FTOL=1000 # max frames for this time-lapse video
-FR=5      # default frame rate
+PERC=50   # select clusters with members less then this percentile
+FTOL=3000 # max frames for this time-lapse video
+FR=30      # default frame rate
 if [[ -n $2 ]] && [[ $2 != "y" ]]; then
  FR=$2
  echo "frame rate set to specified: $FR"
