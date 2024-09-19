@@ -93,3 +93,4 @@ Enabling `imgdist` allows Hu's moment invariants | *ORB* descriptors being used 
 * Too few images being selected. Either `nfts` can be progressively lowered towards a minimum of *3* or `imgfull` analysis option may be invoked.
 * Images are in an unrecognised format, convert all such images to JPG.
 * Images sizes differ. 
+* Not getting good clustering with `imgdist=0|1`? Increase `nfts`. Note: increasing `nfts` does not impact `imgdist=2` or `imgfull=1` options. 
