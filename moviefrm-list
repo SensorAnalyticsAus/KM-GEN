@@ -41,7 +41,8 @@ rm -rf /tmp/tmp.* ||  true #clean up tmp
 TMPD=`mktemp -d`
 echo "$TMPD created"
 
-cat $FILPATH | xargs cp -t $TMPD 
+#cat $FILPATH | xargs cp -t $TMPD 
+cp `cat $FILPATH` $TMPD
 
 echo "Files: `ls $TMPD | wc -l` Copied to $TMPD"
 echo `ls $TMPD | wc -l` files found
@@ -61,5 +62,5 @@ cat *.jpg    | ffmpeg -hide_banner -loglevel error -stats -f image2pipe -r $FR \
         -i - -vcodec libx264 -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" \
          $MOVPATH/$MOV.mp4 -y
 
-echo "jpg --> $MOVPATH/$MOV"
+echo "jpg --> $MOVPATH/$MOV.mp4"
 
