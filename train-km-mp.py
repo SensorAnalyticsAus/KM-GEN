@@ -94,12 +94,8 @@ def img_load_proc(workpacket):
            if img_bw: data_vec = hu_invars(imgbw(imgd)[1])
            else: data_vec = hu_invars(imgd)
         elif imgdist == 3: # invoke motion-detect 
-           if img_bw: 
-              data_vec=[int(fileDt(img)),imgcont(imgbw(imgd))[0],
-                            imgcont(imgbw(imgd))[1], calcEntropy(imgf)]
-           else: 
-              data_vec=[int(fileDt(img)),imgcont(imgd)[0],imgcont(imgd)[1],
-                                                     calcEntropy(imgf)]
+           data_vec=[int(fileDt(img)),imgcont(imgd)[0],imgcont(imgd)[1],
+                                                  calcEntropy(imgf)]
         else:
            data_vec = ifeats.flatten()
            if len(data_vec) != nfts*4: 

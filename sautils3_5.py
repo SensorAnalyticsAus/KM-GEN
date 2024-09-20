@@ -234,8 +234,6 @@ def fileDt(fname): # searches YYYYMMDD-HHMMSS in filename rets YYYYMMDDHHMMSS
         d=d.replace('-','')
  else: 
         d='19000101000000' # If None then a very old date is sent
-        print('undated file/folder:-> {}{}{} ! returning:{}'
-              .format(color.RED,fname,color.END,d))
  return(d)
 def fileTs(filename): # get the int timestamp for fileDt string
  fDt=datetime.datetime.strptime(fileDt(filename),'%Y%m%d%H%M%S').timestamp()
