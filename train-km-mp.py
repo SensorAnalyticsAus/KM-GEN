@@ -11,7 +11,7 @@ import pickle
 import matplotlib.pyplot as plt
 from sautils3_5 import num_name,calcEntropy,writeLog,imgcont,save_list,\
      chunk,workpacks,mkdir_cleared,color,check_img,imgFeats,fsearch,\
-     imgResize_n,fileTs,invarPR,imgbw,hu_invars,fileSel
+     imgResize_n,fileTs,invarPR,imgbw,hu_invars,fileSel,fileDt
             
 from config import ImgPath,cSz,wdir,deBug,kiter,kmethod,ninit,nfts,imgfull,\
      imght,saverej,imgdist,rseed,img_bw,ktol,c_old
@@ -93,6 +93,13 @@ def img_load_proc(workpacket):
         elif imgdist == 2: # invoke Hu's moment invariants
            if img_bw: data_vec = hu_invars(imgbw(imgd)[1])
            else: data_vec = hu_invars(imgd)
+        elif imgdist == 3: # invoke motion-detect 
+           if img_bw: 
+              data_vec=[int(fileDt(img)),imgcont(imgbw(imgd))[0],
+                            imgcont(imgbw(imgd))[1], calcEntropy(imgf)]
+           else: 
+              data_vec=[int(fileDt(img)),imgcont(imgd)[0],imgcont(imgd)[1],
+                                                     calcEntropy(imgf)]
         else:
            data_vec = ifeats.flatten()
            if len(data_vec) != nfts*4: 
