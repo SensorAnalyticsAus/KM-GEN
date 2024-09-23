@@ -13,7 +13,10 @@ python predict-km.py i -1
 ```
 Option *-1* in `predict-km.py` allows selecting specific clusters for finding out the images present in each cluster.
 
+##### Cluster 0
 ![Tulips](./flowers/clust0.jpg)
+
+##### Cluster 1
 ![Iris](./flowers/clust1.jpg)
 
 #### Examples Video Analytics
