@@ -6,7 +6,7 @@
 Image classification and video processing examples.
 
 #### Example Image Classification
-Six images of two different type of flowers classified using two clusters.
+Six images of two different type of flowers classified into two clusters using `imgdist=2` for Hu's moment invariants. 
 ```
 python train-km-mp.py on 1 2
 python predict-km.py i -1
