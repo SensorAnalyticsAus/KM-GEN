@@ -13,10 +13,10 @@ python predict-km.py i -1
 ```
 Option *-1* in `predict-km.py` allows selecting specific clusters for finding out the images present in each cluster.
 
-[Tulips](./flowers/clust0.jpg)
-[Iris](./flowers/clust1.jpg)
+![Tulips](./flowers/clust0.jpg)
+![Iris](./flowers/clust1.jpg)
 
-#### Exmaples Video Analytics
+#### Examples Video Analytics
 Following clips were produced for comparing the three main `KM-GEN` methods.
 
 ##### Features vs Descriptors vs Invariants
