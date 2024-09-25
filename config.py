@@ -5,7 +5,7 @@ ImgPath='./flowers/data' # images path
 cSz=5                                       # n imagefiles/workpacket
 wdir='./tmp-pkl'                            # path to working tmp dir
 imght=30   # adjust full image height to imght pixels keep same A/R
-nfts=10   # features required 
+nfts=10    # features required 
 ktol=1e-6  # default 1e-4
 kiter=1000 # set max_iter value, default=300
 kmethod='k-means++' # random or k-means++
