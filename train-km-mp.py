@@ -180,7 +180,7 @@ if __name__ == "__main__":
   if imgdist == 2 and not imgfull:
       print(color.CYAN+'*Hu invariant PR Started*'+color.END)
   if imgdist == 3 and not imgfull:
-      print(color.RED+'*Hu invariant in Colour PR Started*'+color.END)
+      print(color.LIGHTBLUE+'*Hu invariant in Colour PR Started*'+color.END)
   if imgdist == 4 and not imgfull:
       print(color.BLUE+'Motion-Detection PR Started*'+color.END)
   if img_bw: print(color.DARKCYAN+'*black and white images used*'+color.END)
