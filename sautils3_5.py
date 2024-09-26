@@ -385,6 +385,17 @@ def hu_invars(img): # Calcs all 7 Hu's moments
   for i in range(0,7):
     huM[i] = -1* copysign(1.0, huM[i].item()) * log10(abs(huM[i].item()))
   return huM.flatten()
+def histflat(img,bins): # to cacl img histogram for n bin, return as an array
+
+  if len(img.shape) < 3:
+    h = cv2.calcHist([img],[0],None,[bins],[0,256])
+    return h.flatten()
+  else:
+    hc = []
+    for i in range(len(img.shape)):
+      hc.extend(cv2.calcHist([img],[i],None,[bins],[0,256]))
+    hc = np.array(hc).flatten()
+    return hc # returns numpy array
 def imgDisplay(frame):
  cv2.imshow('Frame', frame)
  if cv2.waitKey(0) & 0xFF == ord('q'): 

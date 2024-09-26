@@ -11,7 +11,7 @@ import pickle
 import matplotlib.pyplot as plt
 from sautils3_5 import num_name,calcEntropy,writeLog,imgcont,save_list,\
      chunk,workpacks,mkdir_cleared,color,check_img,imgFeats,fsearch,\
-     imgResize_n,fileTs,invarPR,imgbw,hu_invars,fileSel,fileDt
+     imgResize_n,fileTs,invarPR,imgbw,hu_invars,fileSel,fileDt,histflat
             
 from config import ImgPath,cSz,wdir,deBug,kiter,kmethod,ninit,nfts,imgfull,\
      imght,saverej,imgdist,rseed,img_bw,ktol,c_old
@@ -93,7 +93,11 @@ def img_load_proc(workpacket):
         elif imgdist == 2: # invoke Hu's moment invariants
            if img_bw: data_vec = hu_invars(imgbw(imgd)[1])
            else: data_vec = hu_invars(imgd)
-        elif imgdist == 3: # invoke motion-detect 
+        elif imgdist == 3: # invoke Hu's moment invariants with colour
+           if img_bw: data_vec = hu_invars(imgbw(imgd)[1])
+           else: 
+              data_vec = np.append(hu_invars(imgd),histflat(imgd,3))
+        elif imgdist == 4: # invoke motion-detect 
            data_vec=[int(fileDt(img)),imgcont(imgd)[0],imgcont(imgd)[1],
                                                   calcEntropy(imgf)]
         else:
@@ -175,6 +179,10 @@ if __name__ == "__main__":
       print(color.PURPLE+'*Full Image PR Started*'+color.END)
   if imgdist == 2 and not imgfull:
       print(color.CYAN+'*Hu invariant PR Started*'+color.END)
+  if imgdist == 3 and not imgfull:
+      print(color.RED+'*Hu invariant in Colour PR Started*'+color.END)
+  if imgdist == 4 and not imgfull:
+      print(color.BLUE+'Motion-Detection PR Started*'+color.END)
   if img_bw: print(color.DARKCYAN+'*black and white images used*'+color.END)
 
   mkdir_cleared(wdir) # working dir to save serialised mproc outputs
