@@ -1,10 +1,7 @@
 # KM-GEN CONFIG
 #
 c_old=0   # '0' compute new training data '1' re-use training data from lastrun
-#ImgPath='./flowers/data' # images path 
-#ImgPath='../../../FILES/flowers/flowersF' # images path 
-#ImgPath='../../../FILES/yt/images-polar' # images path 
-ImgPath='../../../FILES/yt/images-calidrive' # images path 
+ImgPath='./flowers/data' # images path 
 cSz=5                                       # n imagefiles/workpacket
 wdir='./tmp-pkl'                            # path to working tmp dir
 imght=30   # adjust full image height to imght pixels keep same A/R
@@ -21,7 +18,7 @@ imgfull=0  # '0' disables full image | '1' uses full image overrides imgdist
 img_bw=0   # '0' use default grayscale | '1' change to black and white
 imgdist=3  # '0' use keypoint features | '1' use descriptors' hamming dists
            # '2' use Hu's invariants | '3' use Hu's invariants with colour
-           # '4' motion-detect (suits sec cams)
+           # '4' use only colours    | '5' motion-detect (suits sec cams)
 #
 # Usage:
 # Extract frames from video:

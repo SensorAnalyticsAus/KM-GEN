@@ -97,7 +97,9 @@ def img_load_proc(workpacket):
            if img_bw: data_vec = hu_invars(imgbw(imgd)[1])
            else: 
               data_vec = np.append(hu_invars(imgd),histflat(imgd,3))
-        elif imgdist == 4: # invoke motion-detect 
+        elif imgdist == 4: # invoke colour discriminant
+           data_vec = histflat(imgd,3)
+        elif imgdist == 5: # invoke motion-detect 
            data_vec=[int(fileDt(img)),imgcont(imgd)[0],imgcont(imgd)[1],
                                                   calcEntropy(imgf)]
         else:
@@ -182,7 +184,9 @@ if __name__ == "__main__":
   if imgdist == 3 and not imgfull:
       print(color.LIGHTBLUE+'*Hu invariant in Colour PR Started*'+color.END)
   if imgdist == 4 and not imgfull:
-      print(color.BLUE+'Motion-Detection PR Started*'+color.END)
+      print(color.PINK+'*Only Differentiate Colours*'+color.END)
+  if imgdist == 5 and not imgfull:
+      print(color.BLUE+'*Motion-Detection PR Started*'+color.END)
   if img_bw: print(color.DARKCYAN+'*black and white images used*'+color.END)
 
   mkdir_cleared(wdir) # working dir to save serialised mproc outputs
