@@ -9,7 +9,7 @@ nfts=10    # features required
 ktol=1e-6  # default 1e-4
 kiter=1000 # set max_iter value, default=300
 kmethod='k-means++' # random or k-means++
-ninit=100  # a numeric value e.g. 10 or 'auto', later is non-deterministic
+ninit=50  # a numeric value e.g. 10 or 'auto', later is non-deterministic
 loadfit=0  # '0' use labels from training '1' recompute labels with fit_predict
 saverej='no' # 'yes' or 'no' save or don't save rejected image file names
 rseed=20 # any number for reproduceable indices for imgdist or 'off' to disable
