@@ -38,7 +38,7 @@ Hu's method is the fastest. It selects more accurately, collecting more novel sc
 
 ### Usage
 * The images should be of adequate resolution, e.g. 480 x 640 or above.
-* The images have adequate features such as in street scenes, landscapes, objects, people etc. For instance trying to analyse tiny MNIST images or very dark scenes will not work as these are of extremely low resolution/contrast and thus not amenable for feature analysis. Feature analysis can however be replaced with full image analysis by enabling `imgfull` option in `config.py`. 
+* The images have adequate features such as in street scenes, landscapes, objects, people etc. For instance trying to analyse tiny MNIST images or very dark scenes will not work as these are of extremely low resolution/contrast and thus not amenable for feature analysis. Feature analysis can however be replaced with full image analysis by enabling `imgfull` and `img_bw` options in `config.py`; reducing `imght` can benefit images with scant details. 
 * The `imgfull` option should be enabled for low-light frames such as those captured in night vision mode of security cameras or `nfts` value can be lowered to double digits in this case. Alternatively `KM-MOD` may be used which is designed specifically for security cameras.
 
 ### Underlying Principle
