@@ -6,7 +6,7 @@
 Image classification and video processing examples.
 
 #### Example Image Classification
-Six images of two different type of flowers classified into two clusters using `imgdist=2` for Hu's moment invariants. 
+Six images of two different type of flowers classified into two clusters using `imgdist=3` for Hu's moment invariants with colour support. 
 ```
 python train-km-mp.py on 1 2
 python predict-km.py i -1
@@ -101,8 +101,8 @@ The following `imgdist` values select different PR algorithms with the exception
 
 * 0: *ORB* keypoint features
 * 1: *ORB* descriptors
-* 2: Hu invariant moments on grayscale images
-* 3: Hu invariant moments with RGB support
+* 2: Hu moment invariants on grayscale images
+* 3: Hu moment invariants with RGB support
 * 4: Colour histograms
 * 5: Image's upper left corner's data from discrete Cosine Transformation  
 * 6: Eigen values of single objects against uniform background (as in Eigenfaces) 
