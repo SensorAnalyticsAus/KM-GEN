@@ -93,7 +93,8 @@ DV=YT
 `$ ./moviefrm-list 1 ffnames.txt`. This will create a time-lapse video of the selected frames in Step 2 and display these at 1 frame/sec.
 
 ### Invariant Pattern Recognition
-Setting `imgdist > 0` enables invariant pattern recognition methods such as *ORB* descriptors and Hu's moment invariants being used instead of keypoint features. Generally Euclidean distance is used however for *ORB* descriptors, an index frame is randomly chosen and the Hamming Distances of all other frames are calculated with reference to this frame. *ORB* descriptors are not overly affected by the image being rotated so nor are their respective distances. 
+Invariant methods are not overly affected by the images being rotated.
+Setting `imgdist > 0` enables invariant pattern recognition methods such as *ORB* descriptors and Hu's moment invariants being used instead of keypoint features. Generally Euclidean distance is used however for *ORB* descriptors, an index frame is randomly chosen and the Hamming Distances of all other frames are calculated with reference to this frame. 
 
 ### Config PR Options
 The following `imgdist` values select different PR algorithms with the exception of `imgfull` option.
