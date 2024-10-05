@@ -5,7 +5,8 @@
 
 import sys,os,argparse
 from config import ImgPath as prefixP
-from config import loadfit
+from config import loadfit,imgdist,imgfull,img_bw
+from sautils3_6 import whereinC
 
 CLI = argparse.ArgumentParser(epilog='Note for INTERACTIVE MODE: Enter perc = 0\
                 for percentile option. Enter perc = -1 for\
@@ -96,3 +97,12 @@ for i in ffnames:
 print(len(ffnames),'cluster imgfiles saved as ffnames.txt')
 
 f.close()
+
+# research section
+whr = []
+for i in range(len(fnames)):
+   whr.append(whereinC(i,membersC,fnames))
+if imgfull == 1: imgdist = 7 # add imgfull options to end of imgdist vals
+if imgfull == 1 and img_bw == 1: imgdist = 8
+with open('fn_'+str(imgdist)+'.pkl','wb') as fpkl:
+   fpkl.write(pickle.dumps(whr))

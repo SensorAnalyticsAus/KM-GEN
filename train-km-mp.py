@@ -9,9 +9,10 @@ from sklearn.cluster import KMeans
 from sklearn import preprocessing
 import pickle
 import matplotlib.pyplot as plt
-from sautils3_5 import num_name,calcEntropy,writeLog,imgcont,save_list,\
+from sautils3_6 import num_name,calcEntropy,writeLog,imgcont,save_list,\
      chunk,workpacks,mkdir_cleared,color,check_img,imgFeats,fsearch,\
-     imgResize_n,fileTs,invarPR,imgbw,hu_invars,fileSel,fileDt,histflat
+     imgResize_n,fileTs,invarPR,imgbw,hu_invars,fileSel,fileDt,histflat,\
+     imgDCT,imgbin
             
 from config import ImgPath,cSz,wdir,deBug,kiter,kmethod,ninit,nfts,imgfull,\
      imght,saverej,imgdist,rseed,img_bw,ktol,c_old
@@ -99,7 +100,11 @@ def img_load_proc(workpacket):
               data_vec = np.append(hu_invars(imgd),histflat(imgd,3))
         elif imgdist == 4: # invoke colour discriminant
            data_vec = histflat(imgd,3)
-        elif imgdist == 5: # invoke motion-detect 
+        elif imgdist == 5: # invoke DCT 
+           data_vec = imgDCT(imgd)
+        elif imgdist == 6: # invoke Sprectral requires RGB
+           data_vec = imgbin(imgd)
+        elif imgdist == 7: # invoke motion-detect 
            data_vec=[int(fileDt(img)),imgcont(imgd)[0],imgcont(imgd)[1],
                                                   calcEntropy(imgf)]
         else:
@@ -186,8 +191,12 @@ if __name__ == "__main__":
   if imgdist == 4 and not imgfull:
       print(color.PINK+'*Only Differentiate Colours*'+color.END)
   if imgdist == 5 and not imgfull:
-      print(color.BLUE+'*Motion-Detection PR Started*'+color.END)
-  if img_bw: print(color.DARKCYAN+'*black and white images used*'+color.END)
+      print(color.BLUE+'*DST PR Started*'+color.END)
+  if imgdist == 6 and not imgfull:
+      print(color.BGBLUE+'*Spectral PR Started*'+color.END)
+  if imgdist == 7 and not imgfull:
+      print(color.DARKCYAN+'*Motion-Detection PR Started*'+color.END)
+  if img_bw: print(color.BOLD+'*black and white images used*'+color.END)
 
   mkdir_cleared(wdir) # working dir to save serialised mproc outputs
   if len(sys.argv) == 6: 
@@ -288,7 +297,7 @@ if __name__ == "__main__":
  ################### KMeans Block ################################
  print('ready to train KMeans with:',nC,'clusters')
  km = KMeans(init=kmethod,n_clusters=nC,n_init=ninit,max_iter=kiter,\
-             tol=ktol) 
+             tol=ktol,random_state=0,algorithm='elkan') 
  km.fit(dataNormed)
  pickle.dump(km, open(mname, 'wb')) # dump trained model
  print('*KMeans trained model saved as:{} for prediction module*'.format(mname))
