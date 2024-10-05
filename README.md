@@ -93,7 +93,7 @@ DV=YT
 `$ ./moviefrm-list 1 ffnames.txt`. This will create a time-lapse video of the selected frames in Step 2 and display these at 1 frame/sec.
 
 ### Invariant Pattern Recognition
-Enabling `imgdist` allows Hu's moment invariants | *ORB* descriptors being used instead of keypoint features. For later an index frame is randomly chosen and the Hamming Distances of all other frames are calculated with reference to this frame. These descriptors are not overly affected by the image being rotated so nor are their respective distances. **NB:** Enabling `imgfull` over rides this option.
+Setting `imgdist > 0` enables invariant pattern recognition methods such as *ORB* descriptors and Hu's moment invariants being used instead of keypoint features. Generally Euclidean distance is used however for *ORB* descriptors, an index frame is randomly chosen and the Hamming Distances of all other frames are calculated with reference to this frame. *ORB* descriptors are not overly affected by the image being rotated so nor are their respective distances. 
 
 ### Config PR Options
 The following `imgdist` values select different PR algorithms with the exception of `imgfull` option.
@@ -107,6 +107,7 @@ The following `imgdist` values select different PR algorithms with the exception
 * 6: Eigen values of single objects against uniform background (as in Eigenfaces) 
 * 7: Image contours and entropy for motion-detection in security camera frames
 * `img_bw` flag for converting images to black and white is accepted for `imgfull` and `imgdist = 0,1,2,3` options.
+**NB:** Enabling `imgfull` over rides all the above options. 
 
 ### Utils
 * `./utils/done-driver-mp` accepts `-h` to display usage information. This is a general purpose utility, which runs in batch mode with user specified parameters, to create a time-lapse video of all images in a folder.
