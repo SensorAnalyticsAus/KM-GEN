@@ -95,6 +95,19 @@ DV=YT
 ### Invariant Pattern Recognition
 Enabling `imgdist` allows Hu's moment invariants | *ORB* descriptors being used instead of keypoint features. For later an index frame is randomly chosen and the Hamming Distances of all other frames are calculated with reference to this frame. These descriptors are not overly affected by the image being rotated so nor are their respective distances. **NB:** Enabling `imgfull` over rides this option.
 
+### Config PR Options
+The following `imgdist` values select different PR algorithms with the exception of `imgfull` option.
+
+* 0: *ORB* keypoint features
+* 1: *ORB* descriptors
+* 2: Hu invariant moments on grayscale images
+* 3: Hu invariant moments with RGB support
+* 4: Colour histograms
+* 5: Image's upper left corner's data from discrete Cosine Transformation  
+* 6: Eigen values of single objects against uniform background (as in Eigenfaces) 
+* 7: Image contours and entropy for motion-detection in security camera frames
+* `img_bw` flag for converting images to black and white is accepted for `imgfull` and `imgdist = 0,1,2,3` options.
+
 ### Utils
 * `./utils/done-driver-mp` accepts `-h` to display usage information. This is a general purpose utility, which runs in batch mode with user specified parameters, to create a time-lapse video of all images in a folder.
 
