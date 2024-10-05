@@ -125,4 +125,4 @@ The following `imgdist` values select different PR algorithms with the exception
 * Too few images being selected. Either `nfts` can be progressively lowered towards a minimum of *3* or `imgfull` analysis option may be invoked.
 * Images are in an unrecognised format, convert all such images to JPG.
 * Images sizes differ. 
-* Not getting good clustering with `imgdist=0|1`? Increase `nfts`. Note: increasing `nfts` does not impact `imgdist=2` or `imgfull=1` options. 
+* Not getting good clustering with `imgdist=0|1`? Increase `nfts`. Note: increasing `nfts` does neither impact `imgfull=1`nor `imgdist > 1` options. 
