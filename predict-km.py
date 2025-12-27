@@ -44,6 +44,8 @@ mC = []
 for i in range(0,nC):
     membersC.append(np.where(labels == i)[0])
     mC.append(len(membersC[i]))
+
+
 mCs = sorted(mC)
 if int(args.perc) >= 0:
     print('cluster sizes in ascending order clust_size:clust_index:')
@@ -97,6 +99,18 @@ for i in ffnames:
 print(len(ffnames),'cluster imgfiles saved as ffnames.txt')
 
 f.close()
+
+
+# Finally save image paths of all clusters to respective files:
+for i in range(0,nC):
+    ffnames_all = []
+    for j in membersC[i]:
+        ffnames_all.append(os.path.join(prefixP,fnames[j]))
+    with open ('cluster_'+str(i)+'.txt','w') as f:
+        ffnames_all.sort()
+        for nm in ffnames_all:
+            f.write(nm+'\n')
+        print('cluster_'+str(i)+'.txt -> '+str(len(ffnames_all))+ ': imgpaths')
 
 # research section
 whr = []

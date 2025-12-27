@@ -19,6 +19,8 @@ Option *-1* in `predict-km.py` allows selecting specific clusters for finding ou
 ##### Cluster 1
 ![Iris](./flowers/clust1.jpg)
 
+Alternatively, any cluster can be inspected e.g. `feh -f cluster_0.txt`
+
 #### Examples Video Analytics
 Following clips were produced for comparing the three main `KM-GEN` methods.
 
