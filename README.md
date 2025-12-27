@@ -1,6 +1,6 @@
 
 ### About ###
-`KM-GEN` is an unsupervised classifier for finding groups of similar or dissimilar images (anomalies) in large collections. It's used for analysing image repositories e.g. from auto-captured video footage e.g. travel VLOGs, security cam snaps/videos etc and semi-automatic labelling of training datasets. Commonly occurring frames can be filtered out leaving only images which are relatively unique and thus may be of interest. A long video may be converted into a short time-lapse video of highlights or a large image collection can be condensed into a slide show of relatively unique images.
+`KM-GEN` is an unsupervised classifier for finding groups of similar or dissimilar images (anomalies) in large collections. It's used for classifying visual data e.g. travel VLOGs, security cam snaps/videos etc and for semi-automatic labelling of training datasets. Commonly occurring frames can be filtered out leaving only images which are relatively unique and thus may be of interest. A long video may be converted into a short time-lapse video of highlights or a large image collection can be condensed into a slide show of relatively unique images.
 
 ### Demos ###
 Image classification and video processing examples.
