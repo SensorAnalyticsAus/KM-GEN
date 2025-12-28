@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ ! -f /usr/bin/feh ]; then
+ echo "install feh before use"
+ exit 1
+fi
+
+if [ $# -ne 3 ]; then
+ echo "blinks through images in a file or folder"
+ echo "usage {c|m} {img_folder|img_list} {dest_folder}"
+ echo " press <n|spacebar> to cycle through images"
+ echo " press <return|0> to copy or move displayed img to dest_folder"
+ exit 1
+fi
+
+if [[ $1 -ne "c" || $1 -ne "m" ]]; then
+ echo "invalid action: enter c or m"
+ exit 1
+fi
+
+ACT=$1
+I_SRC=$2
+I_DST=$3
+
+if [ $ACT == "c" ]; then
+ if [ -f $I_SRC ]; then
+  feh --action "cp %F $I_DST" -f $I_SRC 
+ else
+  feh --action "cp %F $I_DST" $I_SRC 
+ fi
+fi
+if [ $ACT == "m" ]; then
+ if [ -f $I_SRC ]; then
+  feh --action "mv %F $I_DST" -f $I_SRC 
+ else
+  feh --action "mv %F $I_DST" $I_SRC 
+ fi
+fi
