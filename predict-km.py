@@ -1,12 +1,12 @@
 ###############################################################################
 #                  KM-GEN General Purpose Image Classifier
-#                      Sensor Analytics Australia™ 2024
+#                      Sensor Analytics Australia™ 2026
 ###############################################################################
 
 import sys,os,argparse
 from config import ImgPath as prefixP
 from config import loadfit,imgdist,imgfull,img_bw
-from sautils3_6 import whereinC
+from sautils3_6 import whereinC,mkdir_cleared
 
 CLI = argparse.ArgumentParser(epilog='Note for INTERACTIVE MODE: Enter perc = 0\
                 for percentile option. Enter perc = -1 for\
@@ -21,6 +21,7 @@ args = CLI.parse_args()
 import numpy as np
 from sklearn.cluster import KMeans
 import pickle
+
 
 if not os.path.exists(prefixP):
     print('path',prefixP,'does not exist! fix prefixP')
@@ -100,18 +101,25 @@ print(len(ffnames),'cluster imgfiles saved as ffnames.txt')
 
 f.close()
 
-
-# Finally save image paths of all clusters to respective files:
+# Finally save image paths of all clusters to respective files in ./clustOuts:
+ffnames_all = []
+mkdir_cleared('./clustOuts')
 for i in range(0,nC):
-    ffnames_all = []
     for j in membersC[i]:
         ffnames_all.append(os.path.join(prefixP,fnames[j]))
-    with open ('cluster_'+str(i)+'.txt','w') as f:
-        ffnames_all.sort()
-        for nm in ffnames_all:
-            f.write(nm+'\n')
-        print('cluster_'+str(i)+'.txt -> '+str(len(ffnames_all))+ ': imgpaths')
+    ffnames_all.sort()
+    try: 
+        with open ('./clustOuts/cluster_'+str(i)+'.txt','w') as f:
+            for nm in ffnames_all:
+                f.write(nm+'\n')
+            print('cluster_'+str(i)+'.txt -> '+str(len(ffnames_all)))
+    except FileNotFoundError:
+        print(f"Error: {file_name} not found.")
+    except Exception as e:
+        print(f"An error occurred with file_name: {e}")
+    ffnames_all.clear()
 
+sys.exit(1)
 # research section
 whr = []
 for i in range(len(fnames)):

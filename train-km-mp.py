@@ -1,6 +1,6 @@
 ###############################################################################
 #                 KM-GEN General Purpose Image Classifier  
-#                      Sensor Analytics Australia™ 2024
+#                      Sensor Analytics Australia™ 2026
 ###############################################################################
 
 import sys
