@@ -1,8 +1,7 @@
 # KM-GEN CONFIG
 #
 c_old=0   # '0' compute new training data '1' re-use training data from lastrun
-#ImgPath='./flowers/data' # images path 
-ImgPath='/mnt/WD6TB_PI4C/nn/night/c500' # images path 
+ImgPath='./flowers/data' # images path 
 cSz=5                                       # n imagefiles/workpacket
 wdir='./tmp-pkl'                            # path to working tmp dir
 nfts=10    # features required 
