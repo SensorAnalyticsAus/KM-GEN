@@ -1,0 +1,24 @@
+#!/bin/bash
+# Copies image file from paths listed in the img_paths_file to dest_folder/
+
+if [ $# -ne 2 ]; then
+ echo "usage: [imgpaths_file] {dest_folder}"
+ exit 1
+fi
+
+DEST_DIR=`basename "$1" ".txt"`
+if [ -d "$2/$DEST_DIR" ]; then
+ rm -r "$2/$DEST_DIR/"
+fi
+mkdir -p "$2/$DEST_DIR"
+if [ $? -ne 0 ];then
+ echo "mkdir $2/$DEST_DIR failed exiting"
+ exit 1
+fi
+# Copy imgfiles to dest dir
+echo "copying from $1 : `cat $1 | wc -l` images -> $2/$DEST_DIR"
+time cat $1 | xargs -I % cp % "$2/$DEST_DIR" 
+if [ $? -ne 0 ];then
+ echo "Copying to $2/$DEST_DIR failed exiting"
+ exit 1
+fi

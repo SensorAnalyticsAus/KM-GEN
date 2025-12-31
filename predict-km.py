@@ -119,8 +119,8 @@ for i in range(0,nC):
         print(f"An error occurred with file_name: {e}")
     ffnames_all.clear()
 
-sys.exit(1)
 # research section
+'''
 whr = []
 for i in range(len(fnames)):
    whr.append(whereinC(i,membersC,fnames))
@@ -128,3 +128,4 @@ if imgfull == 1: imgdist = 7 # add imgfull options to end of imgdist vals
 if imgfull == 1 and img_bw == 1: imgdist = 8
 with open('fn_'+str(imgdist)+'.pkl','wb') as fpkl:
    fpkl.write(pickle.dumps(whr))
+'''

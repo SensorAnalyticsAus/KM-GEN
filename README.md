@@ -122,6 +122,8 @@ The following `imgdist` values select different PR algorithms with the exception
 * `./utils/daily-driver-mp` accepts `on|off` to display progress bar or run in silent mode (e.g. for use in cron). This utility is for security cam images with filenames in [OCD3](https://github.com/SensorAnalyticsAus/OCD---OpenCv-motion-Detector) or Foscam date-time format (e.g. `img_20240515-223903_019269.jpg`. It runs in batch mode collecting all images from time now till 12 hours in the past for a time-lapse summary of events. Recommended `imgdist=3`.
 * `./utils/date-driver-mp` accepts `-h` to display usage information. This utility is also for security cam images. It converts images from user specified date-time range into a time-lapse video. Recommended `imgdist=3`
 
+* `ffnames2images` copies images listed in `ffnames.txt` or `clustsOut/cluster_*.txt` to a user specified destination folder e.g. `clustsOut/root` for `PyTorch` training.
+
 ### Troubleshooting
 * An incorrect path being set in `config.sys` or the bash scripts.
 * Too few images being selected. Either `nfts` can be progressively lowered towards a minimum of *3* or `imgfull` analysis option may be invoked.
