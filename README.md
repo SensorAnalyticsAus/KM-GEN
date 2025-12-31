@@ -2,9 +2,6 @@
 ### About ###
 `KM-GEN` is an unsupervised classifier for finding groups of similar or dissimilar images (anomalies) in large collections. It's used for classifying visual data e.g. travel VLOGs, security cam snaps/videos etc and for semi-automatic labelling of training datasets. Commonly occurring frames can be filtered out leaving only images which are relatively unique and thus may be of interest. A long video may be converted into a short time-lapse video of highlights or a large image collection can be condensed into a slide show of relatively unique images. `KM-GEN` can also automatically label large image repositories for machine learning with `PyTorch` etc.
 
-### Demos ###
-Image classification and video processing examples.
-
 #### Example Image Classification
 Six images of two different type of flowers classified into two clusters using `imgdist=3` for Hu's moment invariants with colour support. 
 ```
@@ -20,23 +17,6 @@ Option *-1* in `predict-km.py` allows selecting specific clusters for finding ou
 ![Iris](./flowers/clust1.jpg)
 
 Alternatively, any cluster can be inspected e.g. ```feh -f cluster_0.txt```
-
-#### Examples Video Analytics
-Following clips were produced for comparing the three main `KM-GEN` methods.
-
-##### Features vs Descriptors vs Invariants
-[Vincent Price | The Last Man on Earth (1964) an A.I. Rendition](https://youtu.be/dgB6E9QJVKk?si=J3d7sTJOuMGVpvhK) is about an eight minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with 100 *ORB* keypoint features.
-
-[Vincent Price | The Last Man on Earth (1964) an A.I. Rendition (Color)](https://youtu.be/mgjJMnhwmpM) is about seven minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with 100 *ORB* descriptors using the Hamming Distances approach; *invariant pattern-recognition* section.
-
-[Vincent Price | The Last Man on Earth (1964) an A.I. Rendition (Color)](https://youtu.be/xaTTK8JK-Gs) is about six minutes `KM-GEN` compilation of atypical scenes from 86 minutes full movie with Hu's moment invariants.
-
-##### Dashcam Video Scanning
-[Dash Cam Tours | 3-Hours Dash Cam Video Scan with A.I.](https://youtu.be/g8BbILWP7_8) is a 1.2 minute `KM-GEN` scan of the three hours long dash cam video with Hu's moment invariant (00:16 time-stamp 2442.873 aircraft crossing above the freeway).
-
-Hu's method is the fastest. It selects more accurately, collecting more novel scenes at some loss of continuity between the scenes making the time-lapse a bit choppier.
-
-[Swedish Railcam | High Speed Polar Train an A.I. Rendition](https://youtu.be/rNEWurCoHp8?si=DAtGZgXiaU_yWRPr) runs a 3 hours 41 minutes train cabin cam from Narvik-Pitkäjärvi in under one minute. *ORB* descriptors' option used. [Hu Invariant version](https://youtu.be/jUA5yO4TNNw) is added for comparison.
 
 ### Usage
 * The images should be of adequate resolution, e.g. 480 x 640 or above.
