@@ -44,7 +44,6 @@ pip install shutils
 pip install -U scikit-learn
 pip install matplotlib
 pip install tqdm
-pip install yt-dlp
 ```
 
 ### Config
