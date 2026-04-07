@@ -18,6 +18,9 @@ Option *-1* in `predict-km.py` allows selecting specific clusters for finding ou
 
 Alternatively, any cluster can be inspected e.g. ```feh -f cluster_0.txt```
 
+##### Security Cam Demo
+A video summary of motion detection images collected with ![OCD](https://github.com/SensorAnalyticsAus/OCD---OpenCv-motion-Detector).
+![@00:10](./demo/gecko.mp4)
 ### Usage
 * The images should be of adequate resolution, e.g. 480 x 640 or above.
 * The images have adequate features such as in street scenes, landscapes, objects, people etc. For instance trying to analyse tiny MNIST images or very dark scenes will not work as these are of extremely low resolution/contrast and thus not amenable for feature analysis. Feature analysis can however be replaced with full image analysis by enabling `imgfull` and `img_bw` options in `config.py`; reducing `imght` can benefit images with scant details. 
